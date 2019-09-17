@@ -25,7 +25,7 @@
 - name: Configure Tomcat server
   template: src=server.xml dest=/usr/share/tomcat/conf/
 
-- name: Configure Tomcat server
+- name: Configure Tomcat Users
   template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
 
 - name: insert firewalld rule for tomcat http port
@@ -60,8 +60,8 @@
 
 - name: Copy sample webapp
   copy:
-     src: my-app-1.0-SNAPSHOT.jar
-     dest: /opt/apache-tomcat-8.5.45/webapps/my-app.jar
+     src: sample.war
+     dest: /opt/apache-tomcat-8.5.45/webapps/sample.war
      owner: tomcat
      group: tomcat
      mode: '0644'
