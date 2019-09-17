@@ -42,10 +42,8 @@
      mode: '0644'
 
 - name: Reload Tomcat Service
-  systemd:
-    name: tomcat
-    state: reloaded
-
+  systemd: daemon_reload=yes
+  
 - name: Symlink for Tomcat Service
   systemd:
     name: tomcat
