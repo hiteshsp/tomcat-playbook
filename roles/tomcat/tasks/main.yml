@@ -57,3 +57,11 @@
 
 - name: wait for tomcat to start
   wait_for: port={{http_port}}
+
+- name: Copy sample webapp
+  copy:
+     src: my-app-1.0-SNAPSHOT.jar
+     dest: /opt/apache-tomcat-8.5.45/webapps/my-app.jar
+     owner: tomcat
+     group: tomcat
+     mode: '0644'
