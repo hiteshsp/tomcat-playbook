@@ -27,9 +27,8 @@
   and thus are ignored when reading this file. Do not forget to remove
   <!.. ..> that surrounds them.
 -->
-
+  <role rolename="manager-gui"/>
   <user username="{{ admin_username }}" password="{{ admin_password }}" roles="manager-gui" />
-
 <!--
   <role rolename="tomcat"/>
   <role rolename="role1"/>
