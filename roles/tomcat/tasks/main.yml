@@ -11,7 +11,7 @@
   become_method: sudo
 
 - name: Download Tomcat
-  get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.45/bin/apache-tomcat-8.5.45.tar.gz dest=/opt/apache-tomcat-8.5.45.tar.gz
+  get_url: url=https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.45/bin/apache-tomcat-8.5.45.tar.gz dest=/opt/apache-tomcat-8.5.45.tar.gz
 
 - name: Extract archive
   command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-8.5.45.tar.gz -C /opt/ creates=/opt/apache-tomcat-8.5.45
@@ -62,6 +62,17 @@
   copy:
      src: sample.war
      dest: /opt/apache-tomcat-8.5.45/webapps/sample.war
+     owner: tomcat
+     group: tomcat
+     mode: '0644'
+
+- name: Mkdir for DevOps Site
+  file: path=/opt/apache-tomcat-8.5.45/webapps/devops owner=tomcat group=tomcat state=directory recurse=yes
+
+- name: Copy DevOps webapp
+  copy:
+     src: index.html
+     dest: /opt/apache-tomcat-8.5.45/webapps/devops
      owner: tomcat
      group: tomcat
      mode: '0644'
